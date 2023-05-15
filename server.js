@@ -34,7 +34,8 @@ app.use(cors(corsOptions));
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to TEKUP PROJECT application." });
 });
-require("./routers/UsersRouter")(app);
+require("./routers/AuthRouter")(app);
+require("./routers/ItemsRouter")(app);
 // SERVER SETUP AND EXECUTION
 app.listen(process.env.APP_PORT, (error) => {
   if (!error)
