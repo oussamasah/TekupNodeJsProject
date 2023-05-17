@@ -8,20 +8,22 @@ var ItemSchema = new Schema({
   price: {
     type: Number,
     required: [true, "Price is required"],
+    min: [5, "Price Must be at least 5DT"],
   },
   description: {
     type: String,
   },
   image: {
     type: { data: Buffer, contentType: String },
-    required: [true, "Image is required"],
   },
   quantity: {
     type: Number,
-    required: [true, "Image is required"],
+    required: [true, "Quantity is required"],
+    min: [5, "Quantity Must be at least 1"],
   },
   owner: {
     type: Schema.Types.ObjectId,
+    ref: "Users",
     required: true,
   },
 });

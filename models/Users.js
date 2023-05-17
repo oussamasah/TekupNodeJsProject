@@ -14,10 +14,20 @@ var UserSchema = new Schema({
     type: String,
     required: [true, "Email is required"],
     unique: [true, "Email already used"],
+    trim: true,
+    lowercase: true,
+    unique: true,
+    validate: {
+      validator: function (v) {
+        return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v);
+      },
+      message: "Please enter a valid email",
+    },
   },
   password: {
     type: String,
     required: [true, "Password is required"],
+    min: [6, "Must be at least 6 chars"],
   },
   role: {
     type: String,

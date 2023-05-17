@@ -5,6 +5,7 @@ dotenv.config();
 const cors = require("cors");
 const app = express();
 var bodyParser = require("body-parser");
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 //Database Connection
@@ -36,6 +37,7 @@ app.get("/", (req, res) => {
 });
 require("./routers/AuthRouter")(app);
 require("./routers/ItemsRouter")(app);
+require("./routers/OrdersRouter")(app);
 // SERVER SETUP AND EXECUTION
 app.listen(process.env.APP_PORT, (error) => {
   if (!error)
